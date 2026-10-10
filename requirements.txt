@@ -1,0 +1,7 @@
+# PyTorch's CUDA builds come from its own package index. cu130 (CUDA 13.0)
+# supports RTX 50-series cards; any recent NVIDIA driver works, and a separate
+# CUDA toolkit install is not needed.
+--extra-index-url https://download.pytorch.org/whl/cu130
+
+torch>=2.14
+torchvision>=0.29
