@@ -8,8 +8,8 @@ changed, and broken.
 
 ![Training timelapse: the same 64 starting noise images, sampled every 500 steps](assets/timelapse.gif)
 
-*Every frame starts from the same 64 noise images, so you're watching the same
-digits form as the model learns. 10,000 training steps, about 7 minutes on an
+*Every frame uses the same 64 noise images and the same random seed, so you're
+watching the same digits form as the model learns. 10,000 training steps, about 7 minutes on an
 RTX 5080.*
 
 ![Sampling: noisy images on the left, the model's guess at the finished digits on the right](assets/denoising.gif)
@@ -46,8 +46,10 @@ digits commit. Watch the top-right digit change its mind from a 1 to a 3.*
    model guesses the clean image, the sampler moves a small step toward that
    guess, and adds a little fresh randomness. After 1,000 small steps, a digit
    has formed.
-5. **The noise decides the digit.** Start from the same static and you get the
-   same digit every time, and often the same digit even from a different model.
+5. **The noise decides the digit.** That's the starting static *and* the fresh
+   randomness added at every step. Fix the seed and you get the same digit every
+   time, and often the same digit even from a different model. Keep the starting
+   static but change the later randomness, and you usually get a different digit.
 
 The comments in `diffusion.py` and `model.py` go into each piece in more depth.
 
